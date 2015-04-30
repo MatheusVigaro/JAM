@@ -10,8 +10,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = ModInformation.ID, version = ModInformation.VERSION)
-public class JustAnotherMod
-{
+public class JustAnotherMod{
 	@Instance(value = ModInformation.ID)
 	public static JustAnotherMod instance;
 	
@@ -27,6 +26,7 @@ public class JustAnotherMod
     public void init(FMLInitializationEvent event){
 		System.out.println("Starting Initialization");
 		JAMItems.registerRecipes();
+		JAMItems.registerOreDict();
 		GameRegistry.registerFuelHandler(new FuelHandler());
 	}
 	

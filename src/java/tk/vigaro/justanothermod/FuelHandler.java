@@ -10,7 +10,7 @@ public class FuelHandler implements IFuelHandler{
 	
 	@Override
 	public int getBurnTime(ItemStack fuel){
-		if (Arrays.asList(JAMItems.nuggetCoal, JAMItems.nuggetCharcoal).contains(fuel)){
+		if (Arrays.asList(JAMItems.nuggetCoal, JAMItems.nuggetCharcoal).contains(fuel.getItem())){
 			return 200;
 		}else{
 			return 0;

@@ -1,0 +1,16 @@
+[
+{
+  "modid": "justanothermod",
+  "name": "JAM",
+  "description": "Just Another Mod",
+  "version": "0.0.0",
+  "mcversion": "1.7.10",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Vigaro"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
