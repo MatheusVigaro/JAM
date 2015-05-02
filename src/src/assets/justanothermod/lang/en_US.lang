@@ -1,0 +1,16 @@
+itemGroup.justAnotherMod=Just Another Mod
+
+item.nuggetCoal.name=Coal nugget
+item.nuggetCharcoal.name=Charcoal nugget
+
+item.enderArmorHelmet.name=Ender helmet
+item.enderArmorChestplate.name=Ender chestplate
+item.enderArmorLeggings.name=Ender leggings
+item.enderArmorBoots.name=Ender boots
+
+item.wandLight1.name=Tier 1 light wand
+item.wandLight2.name=Tier 2 light wand
+item.wandLight3.name=Tier 3 light wand
+item.wandLight4.name=Tier 4 light wand
+item.wandLight5.name=Tier 5 light wand
+item.wandLight6.name=Tier 6 light wand
