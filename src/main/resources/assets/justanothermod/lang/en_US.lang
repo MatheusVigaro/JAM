@@ -14,3 +14,8 @@ item.wandLight3.name=Tier 3 light wand
 item.wandLight4.name=Tier 4 light wand
 item.wandLight5.name=Tier 5 light wand
 item.wandLight6.name=Tier 6 light wand
+
+commands.successful=Chunk generation completed!
+commands.failed=Chunk Generation failed!
+commands.numberFormatException=One of the passed arguments wasn't a number!
+commands.stopped=Chunk Generation stopped
