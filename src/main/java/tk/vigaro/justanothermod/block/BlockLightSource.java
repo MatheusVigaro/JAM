@@ -12,7 +12,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockLightSource extends Block{
 	public BlockLightSource(float lightLevel){
 		super(Material.air);
-		this.setCreativeTab(CreativeTab.justAnotherMod);
 		this.setLightLevel(lightLevel);
 		this.setBlockBounds(0F, 0F, 0F, 0F, 0F, 0F);
 
