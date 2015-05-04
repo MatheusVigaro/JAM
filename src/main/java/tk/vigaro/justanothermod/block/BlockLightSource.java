@@ -17,6 +17,10 @@ public class BlockLightSource extends Block{
 
 	}
 
+	@Override
+	public boolean renderAsNormalBlock(){
+		return false;
+	}
 
 	@Override
 	public int quantityDropped(Random random){

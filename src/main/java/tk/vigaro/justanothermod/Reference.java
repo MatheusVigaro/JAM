@@ -7,10 +7,10 @@ import org.apache.logging.log4j.Logger;
 
 import tk.vigaro.justanothermod.util.ChunkPosition;
 
-public class ModInformation {
+public class Reference {
 	public static final String ID = "justanothermod";
 	public static final String NAME = "Just Another Mod";
-	public static final String VERSION = "0.0.0";
+	public static final String VERSION = "0.0.1b";
 	
 	public static Queue<ChunkPosition> toGenerate;
 	public static int startingSize;

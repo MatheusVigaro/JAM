@@ -8,12 +8,12 @@ item.enderArmorChestplate.name=Ender chestplate
 item.enderArmorLeggings.name=Ender leggings
 item.enderArmorBoots.name=Ender boots
 
-item.wandLight1.name=Tier 1 light wand
-item.wandLight2.name=Tier 2 light wand
-item.wandLight3.name=Tier 3 light wand
-item.wandLight4.name=Tier 4 light wand
-item.wandLight5.name=Tier 5 light wand
-item.wandLight6.name=Tier 6 light wand
+item.wandLight_0.name=Tier 0 light wand
+item.wandLight_1.name=Tier 1 light wand
+item.wandLight_2.name=Tier 2 light wand
+item.wandLight_3.name=Tier 3 light wand
+item.wandLight_4.name=Tier 4 light wand
+item.wandLight_5.name=Tier 5 light wand
 
 commands.successful=Chunk generation completed!
 commands.failed=Chunk Generation failed!

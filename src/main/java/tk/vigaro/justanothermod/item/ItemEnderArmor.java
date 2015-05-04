@@ -5,12 +5,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import tk.vigaro.justanothermod.CreativeTab;
-import tk.vigaro.justanothermod.ModInformation;
+import tk.vigaro.justanothermod.Reference;
 
 public class ItemEnderArmor extends ItemArmor {
 	public ItemEnderArmor(String unlocalizedName, ArmorMaterial material, int type) {
 		super(material, 0, type);
-		setTextureName(ModInformation.ID + ":" + unlocalizedName);
+		setTextureName(Reference.ID + ":" + unlocalizedName);
 		setUnlocalizedName(unlocalizedName);
 		setCreativeTab(CreativeTab.justAnotherMod);
 
@@ -18,7 +18,7 @@ public class ItemEnderArmor extends ItemArmor {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
-		return ModInformation.ID + ":textures/armor/" + ItemInfo.ENDER_ARMOR_UNLOCALIZED_NAME + (this.armorType == 2 ? "2" : "1") + ".png";
+		return Reference.ID + ":textures/armor/" + ItemInfo.ENDER_ARMOR_UNLOCALIZED_NAME + (this.armorType == 2 ? "2" : "1") + ".png";
 	}
 
 }
