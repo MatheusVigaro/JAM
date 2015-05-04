@@ -81,6 +81,7 @@ public class JAMItems {
 		ItemStack blockIronStack = new ItemStack(Blocks.iron_block);
 		ItemStack blockGoldStack = new ItemStack(Blocks.gold_block);
 		ItemStack blockDiamondStack = new ItemStack(Blocks.diamond_block);
+		ItemStack lapisLazuliStack = new ItemStack(Items.dye, 1, 4);
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(nuggetCoal, 8), coalStack);
 		GameRegistry.addShapelessRecipe(new ItemStack(nuggetCharcoal, 8), new ItemStack(Items.coal, 1, 1));
@@ -112,7 +113,7 @@ public class JAMItems {
 												"c  ", 'i', ingotIronStack, 't', torchStack, 'w', wandLight1Stack, 'c', clayStack);
 		GameRegistry.addRecipe(wandLight3Stack, " gr",
 												" wg",
-												"d  ", 'g', ingotGoldStack, 'r', redstoneStack, 'w', wandLight2Stack, 'd', glowstoneDustStack);
+												"l  ", 'g', ingotGoldStack, 'r', redstoneStack, 'w', wandLight2Stack, 'l', lapisLazuliStack);
 		GameRegistry.addRecipe(wandLight4Stack, " dg",
 												" wd",
 												"i  ", 'd', diamondStack, 'g', glowstoneStack, 'w', wandLight3Stack, 'i', blockIronStack);
