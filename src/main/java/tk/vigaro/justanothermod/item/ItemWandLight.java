@@ -23,25 +23,10 @@ public class ItemWandLight extends Item{
 			return false;
 		}
 		if (!world.isAirBlock(x, y, z)){
-			switch(side){
-			case 0:
-				y--;
-				break;
-			case 1:
-				y++;
-				break;
-			case 2:
-				z--;
-				break;
-			case 3:
-				z++;
-				break;
-			case 4:
-				x--;
-				break;
-			case 5:
-				x++;
-			};
+			x += ForgeDirection.getOrientation(side).offsetX;
+			y += ForgeDirection.getOrientation(side).offsetY;
+			z += ForgeDirection.getOrientation(side).offsetZ;
+
 			if (!world.isAirBlock(x, y, z)){
 				return false;
 			}
