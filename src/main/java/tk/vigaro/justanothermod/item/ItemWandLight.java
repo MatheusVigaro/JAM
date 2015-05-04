@@ -13,7 +13,7 @@ public class ItemWandLight extends Item{
 	public ItemWandLight(int tier){
 		setMaxStackSize(1);
 		setUnlocalizedName(ItemInfo.WAND_LIGHT_UNLOCALIZED_NAME + tier);
-		setTextureName(ModInformation.ID + ":" + ItemInfo.WAND_LIGHT_UNLOCALIZED_NAME);
+		setTextureName(ModInformation.ID + ":" + ItemInfo.WAND_LIGHT_UNLOCALIZED_NAME + tier);
 		setCreativeTab(CreativeTab.justAnotherMod);
 	}
 	
