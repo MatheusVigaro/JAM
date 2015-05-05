@@ -3,9 +3,11 @@ package tk.vigaro.justanothermod.block;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import tk.vigaro.justanothermod.JAMMaterials;
+import tk.vigaro.justanothermod.item.JAMItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -49,7 +51,7 @@ public class BlockLightSource extends Block{
 	
 	@Override
 	public void onNeighborBlockChange(World world, int x, int y, int z, Block block){
-		if (world.isAirBlock(x+1, y, z) && world.isAirBlock(x-1 , y, z) && world.isAirBlock(x, y+1, z) && world.isAirBlock(x, y-1, z) && world.isAirBlock(x, y, z+1) && world.isAirBlock(x, y, z-1)){
+		if (world.isAirBlock(x+1, y, z) || world.getBlock(x, y, z) == this && world.isAirBlock(x-1 , y, z) || world.getBlock(x-1, y, z) == this && world.isAirBlock(x, y+1, z) || world.getBlock(x, y+1, z) == this && world.isAirBlock(x, y-1, z) || world.getBlock(x, y-1, z) == this && world.isAirBlock(x, y, z+1) || world.getBlock(x, y, z+1) == this && world.isAirBlock(x, y, z-1) || world.getBlock(x, y, z-1) == this){
 			world.setBlockToAir(x, y, z);
 		}
 	}
@@ -57,7 +59,7 @@ public class BlockLightSource extends Block{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int x, int y, int z, Random rand){
-		if (rand.nextFloat() <= 0.10F){  
+		if (Minecraft.getMinecraft().thePlayer.inventory.getCurrentItem() != null && Minecraft.getMinecraft().thePlayer.inventory.getCurrentItem().getItem() == JAMItems.wandLight ){
 			double motion = rand.nextGaussian()*0.02D;
 			world.spawnParticle("happyVillager", x+0.5D, y+0.5D, z+0.5D, motion, motion, motion);
 		}
