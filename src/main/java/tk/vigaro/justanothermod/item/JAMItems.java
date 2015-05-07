@@ -6,6 +6,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import tk.vigaro.justanothermod.JAMMaterials;
+import tk.vigaro.justanothermod.References;
+import tk.vigaro.justanothermod.block.JAMBlocks;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class JAMItems {
@@ -18,6 +20,7 @@ public class JAMItems {
 	public static Item wandLight;
 	
 	public static void init(){
+		References.logger.info("Registering items");
 		nuggetCoal = new ItemJustAnotherItem(64, "nuggetCoal");
 		nuggetCharcoal = new ItemJustAnotherItem(64, "nuggetCharcoal");
 		enderArmorHelmet = new ItemEnderArmor(ItemInfo.ENDER_ARMOR_UNLOCALIZED_NAME + "Helmet", JAMMaterials.enderArmorMaterial, 0);
@@ -59,7 +62,7 @@ public class JAMItems {
 		ItemStack glowstoneDustStack = new ItemStack(Items.glowstone_dust);
 		ItemStack glowstoneStack = new ItemStack(Blocks.glowstone);
 		ItemStack obsidianStack = new ItemStack(Blocks.obsidian);
-		ItemStack netherStarStack = new ItemStack(Items.nether_star);
+		ItemStack condensedLightStack = new ItemStack(JAMBlocks.condensedLight);
 		ItemStack clayStack = new ItemStack(Items.clay_ball);
 		ItemStack redstoneStack = new ItemStack(Items.redstone);
 		ItemStack blockIronStack = new ItemStack(Blocks.iron_block);
@@ -104,9 +107,9 @@ public class JAMItems {
 		GameRegistry.addRecipe(wandLight4Stack, " og",
                                                 " wo",
                                                 "b  ", 'o', obsidianStack, 'g', glowstoneStack, 'w', wandLight3Stack, 'b', blockGoldStack);
-		GameRegistry.addRecipe(wandLight5Stack, " gn",
+		GameRegistry.addRecipe(wandLight5Stack, " gc",
                                                 " wg",
-                                                "d  ", 'g', blockGoldStack, 'n', netherStarStack, 'w', wandLight4Stack, 'd', blockDiamondStack);
+                                                "d  ", 'g', blockGoldStack, 'n', condensedLightStack, 'w', wandLight4Stack, 'd', blockDiamondStack);
 
 	}
 

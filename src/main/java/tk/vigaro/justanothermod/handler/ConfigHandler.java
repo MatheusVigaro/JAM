@@ -4,7 +4,7 @@ import java.io.File;
 
 import net.minecraftforge.common.config.Configuration;
 import tk.vigaro.justanothermod.ConfigInfo;
-import tk.vigaro.justanothermod.Reference;
+import tk.vigaro.justanothermod.References;
 import cpw.mods.fml.client.event.ConfigChangedEvent.OnConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
@@ -21,7 +21,7 @@ public class ConfigHandler {
 	
 	@SubscribeEvent
 	public void onConfigurationChangedEvent(OnConfigChangedEvent event) {
-		if(event.modID.equalsIgnoreCase(Reference.ID)) {
+		if(event.modID.equalsIgnoreCase(References.ID)) {
 			loadConfiguration();
 		}
 	}

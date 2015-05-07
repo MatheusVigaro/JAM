@@ -11,7 +11,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.ChunkCoordinates;
-import tk.vigaro.justanothermod.Reference;
+import tk.vigaro.justanothermod.References;
 import tk.vigaro.justanothermod.util.ChunkPosition;
 
 public class PreGenCommand implements ICommand{
@@ -72,7 +72,7 @@ public class PreGenCommand implements ICommand{
 				icommandsender.addChatMessage(new ChatComponentText(chatTranslation.getUnformattedTextForChat()));
 			}
 			else if(astring[0].equalsIgnoreCase("stop")) {
-				Reference.toGenerate.clear();
+				References.toGenerate.clear();
 				ChatComponentTranslation chatTranslation = new ChatComponentTranslation("commands.stopped");
 				MinecraftServer.getServer().addChatMessage(chatTranslation);
 				icommandsender.addChatMessage(new ChatComponentText(chatTranslation.getUnformattedTextForChat()));
@@ -99,13 +99,13 @@ public class PreGenCommand implements ICommand{
 
 					for(int i = (x - width/2); i < (x + width/2); i++) {
 						for(int j = (z - height/2); j < (z + height/2); j++) {
-							if(Reference.toGenerate == null) {
-								Reference.toGenerate = new LinkedList<ChunkPosition>();
+							if(References.toGenerate == null) {
+								References.toGenerate = new LinkedList<ChunkPosition>();
 							}
-							Reference.toGenerate.add(new ChunkPosition(i, j, dimensionID, icommandsender));
+							References.toGenerate.add(new ChunkPosition(i, j, dimensionID, icommandsender));
 						}
 					}
-					Reference.startingSize = Reference.toGenerate.size();
+					References.startingSize = References.toGenerate.size();
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
 					ChatComponentTranslation chatTranslation = new ChatComponentTranslation("commands.numberFormatException");

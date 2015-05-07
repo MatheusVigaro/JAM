@@ -9,7 +9,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.storage.RegionFileCache;
 import net.minecraft.world.gen.ChunkProviderServer;
 import net.minecraftforge.common.DimensionManager;
-import tk.vigaro.justanothermod.Reference;
+import tk.vigaro.justanothermod.References;
 
 
 
@@ -60,7 +60,7 @@ public class Utilities {
 //			cps.unloadChunksIfNotNearSpawn(x-1, z);
 			
 
-			Reference.logger.info("Loaded Chunk at " + x + " " + z + " Dimension: " + dimensionID);
+			References.logger.info("Loaded Chunk at " + x + " " + z + " Dimension: " + dimensionID);
 		}
 	}
 }

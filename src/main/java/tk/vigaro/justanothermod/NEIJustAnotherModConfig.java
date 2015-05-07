@@ -8,12 +8,12 @@ public class NEIJustAnotherModConfig implements IConfigureNEI{
 
 	@Override
 	public String getName() {
-		return Reference.NAME;
+		return References.NAME;
 	}
 
 	@Override
 	public String getVersion() {
-		return Reference.VERSION;
+		return References.VERSION;
 	}
 
 	@Override

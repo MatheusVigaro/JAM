@@ -14,4 +14,6 @@ public class ItemInfo {
 
 	public static final String WAND_LIGHT_UNLOCALIZED_NAME = "wandLight";
 	
+	public static final String ITEM_COMPRESSED_UNLOCALIZED_NAME = "itemCompressed";
+	
 }

@@ -23,9 +23,9 @@ import cpw.mods.fml.common.network.NetworkCheckHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid = Reference.ID, version = Reference.VERSION)
+@Mod(modid = References.ID, version = References.VERSION)
 public class JustAnotherMod{
-	@Instance(value = Reference.ID)
+	@Instance(value = References.ID)
 	public static JustAnotherMod instance;
 	
 	@NetworkCheckHandler
@@ -35,9 +35,9 @@ public class JustAnotherMod{
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
-		Reference.logger = LogManager.getLogger(Reference.ID);
-		Reference.decimalFormat = new DecimalFormat();
-		Reference.decimalFormat.setMaximumFractionDigits(2);
+		References.logger = LogManager.getLogger(References.ID);
+		References.decimalFormat = new DecimalFormat();
+		References.decimalFormat.setMaximumFractionDigits(2);
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
 		FMLCommonHandler.instance().bus().register(new ConfigHandler());
 		FMLCommonHandler.instance().bus().register(new TickHandler());
@@ -59,6 +59,7 @@ public class JustAnotherMod{
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
+		CompressBlocks.init();
 	}
 	
 	@EventHandler
