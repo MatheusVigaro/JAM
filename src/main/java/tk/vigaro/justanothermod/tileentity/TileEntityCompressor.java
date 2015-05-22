@@ -17,6 +17,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import tk.vigaro.justanothermod.References;
 import tk.vigaro.justanothermod.config.ConfigMachines;
+import tk.vigaro.justanothermod.item.ItemCompressedBlock;
 import tk.vigaro.justanothermod.item.JAMItems;
 import cofh.api.energy.TileEnergyHandler;
 import cofh.lib.util.helpers.InventoryHelper;
@@ -34,7 +35,6 @@ public class TileEntityCompressor extends TileEnergyHandler {
 			if (storage.getEnergyStored() >= ConfigMachines.compressorEnergyPerCycle && tryCompress()){
 				tickCounter = 0;
 				storage.extractEnergy(ConfigMachines.compressorEnergyPerCycle, false);
-				References.logger.info("Cycle!");
 			}else{
 				tickCounter = -80;
 			}
@@ -100,7 +100,14 @@ public class TileEntityCompressor extends TileEnergyHandler {
 				
 				for (int slot = 0; slot < input.getSizeInventory(); slot++){
 					ItemStack stack = input.getStackInSlot(slot);
-					if ((input instanceof ISidedInventory && !((ISidedInventory)input).canExtractItem(slot, null, ForgeDirection.DOWN.ordinal())) || stack == null || !(stack.getItem() instanceof ItemBlock) || Block.getBlockFromItem(stack.getItem()).getRenderType() != 0 || ((!Block.getBlockFromItem(stack.getItem()).isNormalCube() || !Block.getBlockFromItem(stack.getItem()).isOpaqueCube()) && Block.getBlockFromItem(stack.getItem()).getMaterial() != Material.glass )) {
+					boolean isCompressedBlock;
+					if (stack != null){
+						isCompressedBlock = (stack.getItem() instanceof ItemCompressedBlock);
+					} else {
+						isCompressedBlock = false;
+					}
+
+					if (!isCompressedBlock && ((input instanceof ISidedInventory && !((ISidedInventory)input).canExtractItem(slot, null, ForgeDirection.DOWN.ordinal())) || stack == null || !(stack.getItem() instanceof ItemBlock) || Block.getBlockFromItem(stack.getItem()).getRenderType() != 0 || ((!Block.getBlockFromItem(stack.getItem()).isNormalCube() || !Block.getBlockFromItem(stack.getItem()).isOpaqueCube()) && Block.getBlockFromItem(stack.getItem()).getMaterial() != Material.glass ))) {
 						continue;
 	                }
 
@@ -113,18 +120,28 @@ public class TileEntityCompressor extends TileEnergyHandler {
                     }
 
                     if (stack.stackSize >= 9) {
-                        ItemStack result = new ItemStack(JAMItems.compressedBlock);
+                    	ItemStack result;
+                        if (isCompressedBlock){
+                        	if (stack.getItemDamage() > 5){
+                        		continue;
+                        	}
+                        	result = stack.copy();
+                        	result.stackSize = 1;
+                        	result.setItemDamage(stack.getItemDamage()+1);
+                        	
+                        } else {
+                            result = new ItemStack(JAMItems.compressedBlock);
+                        	UniqueIdentifier identifier = GameRegistry.findUniqueIdentifierFor(Block.getBlockFromItem(stack.getItem()));
+                        	result.stackTagCompound = new NBTTagCompound();
+                        	result.stackTagCompound.setString("contained", identifier.modId + ":" + identifier.name + ":" + stack.getItemDamage());
+                        	
+                        }
+                        ItemStack testStack = InventoryHelper.simulateInsertItemStackIntoInventory(output, result, 1);
+                        if (testStack == null) {
+                           	input.decrStackSize(slot, 9);
+                           	InventoryHelper.insertItemStackIntoInventory(output, result, 1);
+                           	return true;
 
-                        if (result != null) {
-                            UniqueIdentifier identifier = GameRegistry.findUniqueIdentifierFor(Block.getBlockFromItem(stack.getItem()));
-                            result.stackTagCompound = new NBTTagCompound();
-                            result.stackTagCompound.setString("contained", identifier.modId + ":" + identifier.name + ":" + stack.getItemDamage());
-                        	ItemStack testStack = InventoryHelper.simulateInsertItemStackIntoInventory(output, result, 1);
-                            if (testStack == null) {
-                                input.decrStackSize(slot, 9);
-                                InventoryHelper.insertItemStackIntoInventory(output, result, 1);
-                                return true;
-                            }
                         }
                     }
 

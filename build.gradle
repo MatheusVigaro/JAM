@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.7.10-0.0.1b"
+version = "1.7.10-1.0.0"
 group= "tk.vigaro.justanothermod" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "justanothermod"
 
@@ -36,7 +36,7 @@ repositories {
 dependencies {
     compile "codechicken:CodeChickenCore:1.7.10-1.0.4.29:dev"
     compile "codechicken:NotEnoughItems:1.7.10-1.0.3.74:dev"
-
+    compile files("jars/CoFHCore-[1.7.10]3.0.2-262.jar")
 
 }
 

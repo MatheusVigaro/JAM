@@ -21,7 +21,7 @@ import org.lwjgl.opengl.GL11;
 import tk.vigaro.justanothermod.item.ItemCompressedBlock;
 
 /**
- * Adapted from Forestry's crate
+ * Adapted from Forestry's crate at https://github.com/ForestryMC/ForestryMC/blob/e4b8342e1ca20937eebea97665e784444a1af3da/src/main/java/forestry/core/items/ItemCrated.java
  */
 
 public class CompressedRenderHandler implements IItemRenderer {

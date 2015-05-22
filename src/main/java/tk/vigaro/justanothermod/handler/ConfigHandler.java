@@ -35,7 +35,7 @@ public class ConfigHandler {
 		ConfigChunkPreGen.chunksPerTick = configuration.get("Chunk PreGen", "numChunksPerTick", 1, "Number of chunks loaded per tick").getInt();
 		ConfigChunkPreGen.tickDelay = configuration.get("Chunk PreGen", "tickDelay", 40, "Number of ticks inbetween percentage updates").getInt();
 		
-		ConfigMachines.compressorEnergyPerCycle = configuration.get("Machines" , "compressorEnergyPerCycle", 1000, "Amount of power consumed by the compressor per cycle").getInt();		
+		ConfigMachines.compressorEnergyPerCycle = configuration.get("Machines" , "compressorEnergyPerCycle", 5000, "Amount of power consumed by the compressor per cycle").getInt();		
 		
 		if(configuration.hasChanged()) {
 			configuration.save();
