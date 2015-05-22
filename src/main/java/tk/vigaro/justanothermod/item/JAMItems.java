@@ -10,6 +10,7 @@ import tk.vigaro.justanothermod.JAMMaterials;
 import tk.vigaro.justanothermod.References;
 import tk.vigaro.justanothermod.block.JAMBlocks;
 import tk.vigaro.justanothermod.handler.CompressedRenderHandler;
+import tk.vigaro.justanothermod.handler.DecompressCraftingHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class JAMItems {
@@ -74,6 +75,7 @@ public class JAMItems {
 		ItemStack blockDiamondStack = new ItemStack(Blocks.diamond_block);
 		ItemStack lapisLazuliStack = new ItemStack(Items.dye, 1, 4);
 		
+		GameRegistry.addRecipe(new DecompressCraftingHandler());
 		GameRegistry.addShapelessRecipe(new ItemStack(nuggetCoal, 8), coalStack);
 		GameRegistry.addShapelessRecipe(new ItemStack(nuggetCharcoal, 8), new ItemStack(Items.coal, 1, 1));
 		
@@ -114,7 +116,6 @@ public class JAMItems {
 		GameRegistry.addRecipe(wandLight5Stack, " gc",
                                                 " wg",
                                                 "d  ", 'g', blockGoldStack, 'c', condensedLightStack, 'w', wandLight4Stack, 'd', blockDiamondStack);
-
 	}
 
 	public static void registerOreDict() {
