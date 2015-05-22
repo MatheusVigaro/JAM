@@ -3,8 +3,9 @@ package tk.vigaro.justanothermod.handler;
 import java.io.File;
 
 import net.minecraftforge.common.config.Configuration;
-import tk.vigaro.justanothermod.ConfigInfo;
 import tk.vigaro.justanothermod.References;
+import tk.vigaro.justanothermod.config.ConfigChunkPreGen;
+import tk.vigaro.justanothermod.config.ConfigMachines;
 import cpw.mods.fml.client.event.ConfigChangedEvent.OnConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
@@ -27,12 +28,14 @@ public class ConfigHandler {
 	}
 	
 	private static void loadConfiguration() {
-		ConfigInfo.x = configuration.get(Configuration.CATEGORY_GENERAL, "x", 0, "X starting value").getInt();
-		ConfigInfo.z = configuration.get(Configuration.CATEGORY_GENERAL, "z", 0, "Z starting value").getInt();
-		ConfigInfo.height = configuration.get(Configuration.CATEGORY_GENERAL, "height", 0, "Height starting value").getInt();
-		ConfigInfo.width = configuration.get(Configuration.CATEGORY_GENERAL, "width", 0, "Width starting value").getInt();
-		ConfigInfo.chunksPerTick = configuration.get(Configuration.CATEGORY_GENERAL, "numChunksPerTick", 1, "Number of chunks loaded per tick").getInt();
-		ConfigInfo.tickDelay = configuration.get(Configuration.CATEGORY_GENERAL, "tickDelay", 40, "Number of ticks inbetween percentage updates").getInt();
+		ConfigChunkPreGen.x = configuration.get("Chunk PreGen", "x", 0, "X starting value").getInt();
+		ConfigChunkPreGen.z = configuration.get("Chunk PreGen", "z", 0, "Z starting value").getInt();
+		ConfigChunkPreGen.height = configuration.get("Chunk PreGen", "height", 0, "Height starting value").getInt();
+		ConfigChunkPreGen.width = configuration.get("Chunk PreGen", "width", 0, "Width starting value").getInt();
+		ConfigChunkPreGen.chunksPerTick = configuration.get("Chunk PreGen", "numChunksPerTick", 1, "Number of chunks loaded per tick").getInt();
+		ConfigChunkPreGen.tickDelay = configuration.get("Chunk PreGen", "tickDelay", 40, "Number of ticks inbetween percentage updates").getInt();
+		
+		ConfigMachines.compressorEnergyPerCycle = configuration.get("Machines" , "compressorEnergyPerCycle", 1000, "Amount of power consumed by the compressor per cycle").getInt();		
 		
 		if(configuration.hasChanged()) {
 			configuration.save();

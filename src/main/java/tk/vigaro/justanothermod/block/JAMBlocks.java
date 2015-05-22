@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import tk.vigaro.justanothermod.References;
+import tk.vigaro.justanothermod.tileentity.TileEntityCompressor;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -18,6 +19,8 @@ public class JAMBlocks {
 	public static Map<Integer, Block> lightSource;
 
 	public static Block condensedLight;
+
+	public static Block compressor;
 	
 	public static void init(){
 		References.logger.info("Registering blocks");
@@ -35,26 +38,32 @@ public class JAMBlocks {
 		lightSource.put(4, lightSource4);
 		lightSource.put(5, lightSource5);
 
-		condensedLight = new BlockJustAnotherBlock(Material.iron, BlockInformation.CONDENSED_LIGHT_UNLOCALIZED_NAME, "pickaxe", 2).setLightLevel(1.0F).setHardness(20.0F);
+		condensedLight = new BlockJustAnotherBlock(Material.iron, BlockInfo.CONDENSED_LIGHT_UNLOCALIZED_NAME, "pickaxe", 2).setLightLevel(1.0F).setHardness(20.0F);
 
+		compressor = new BlockCompressor();
 	}
 	
 	public static void registerBlocks(){
 		for (int i = 0; i < 6; i++){
-			GameRegistry.registerBlock(lightSource.get(i), BlockInformation.LIGHT_SOURCE_UNLOCALIZED_NAME + "_" + i);
+			GameRegistry.registerBlock(lightSource.get(i), BlockInfo.LIGHT_SOURCE_UNLOCALIZED_NAME + "_" + i);
 		}
 		
-		GameRegistry.registerBlock(condensedLight, BlockInformation.CONDENSED_LIGHT_UNLOCALIZED_NAME);
-
+		GameRegistry.registerBlock(condensedLight, BlockInfo.CONDENSED_LIGHT_UNLOCALIZED_NAME);
+		GameRegistry.registerBlock(compressor, BlockInfo.COMPRESSOR_UNLOCALIZED_NAME);
 	}
 
-	public static void registerRecipes() {
+	public static void registerRecipes(){
 		// TODO Auto-generated method stub
 		
 	}
 
-	public static void registerOreDict() {
+	public static void registerOreDict(){
 		// TODO Auto-generated method stub
+		
+	}
+	
+	public static void registerTileEntities(){
+		GameRegistry.registerTileEntity(TileEntityCompressor.class, "tileCompressor");
 		
 	}
 

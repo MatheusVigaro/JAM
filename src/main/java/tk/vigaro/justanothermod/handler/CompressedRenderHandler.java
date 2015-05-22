@@ -322,7 +322,7 @@ public class CompressedRenderHandler implements IItemRenderer {
 
 		Item crateItem = crate.getItem();
 		if (crateItem instanceof ItemCompressedBlock) {
-			return ((ItemCompressedBlock) crateItem).getContained();
+			return ((ItemCompressedBlock) crateItem).getContained(crate);
 		}
 		return null;
 	}

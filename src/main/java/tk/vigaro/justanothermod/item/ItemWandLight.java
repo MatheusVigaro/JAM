@@ -14,6 +14,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import tk.vigaro.justanothermod.References;
 import tk.vigaro.justanothermod.block.JAMBlocks;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemWandLight extends Item{
 	public ItemWandLight(){
@@ -26,6 +28,7 @@ public class ItemWandLight extends Item{
 	
 	public IIcon[] icons = new IIcon[6];
 	
+	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IIconRegister reg){
 		for (int i = 0; i < 6; i++){
@@ -33,6 +36,7 @@ public class ItemWandLight extends Item{
 		}
 	}
 	
+	@SideOnly(Side.CLIENT)
 	@Override
 	public IIcon getIconFromDamage(int meta){
 		return this.icons[meta];

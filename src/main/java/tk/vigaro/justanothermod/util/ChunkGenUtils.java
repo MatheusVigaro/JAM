@@ -14,7 +14,7 @@ import tk.vigaro.justanothermod.References;
 
 
 
-public class Utilities {
+public class ChunkGenUtils {
 
 	public static void generateChunks(int x, int z, int width, int height, int dimensionID) {
 
@@ -51,13 +51,6 @@ public class Utilities {
 			cps.loadChunk(x, z+1);
 			cps.loadChunk(x+1, z);
 			cps.loadChunk(x+1, z+1);
-			
-//			cps.unloadChunksIfNotNearSpawn(x, z);
-//			
-//			cps.unloadChunksIfNotNearSpawn(x, z+1);
-//			cps.unloadChunksIfNotNearSpawn(x, z-1);
-//			cps.unloadChunksIfNotNearSpawn(x+1, z);
-//			cps.unloadChunksIfNotNearSpawn(x-1, z);
 			
 
 			References.logger.info("Loaded Chunk at " + x + " " + z + " Dimension: " + dimensionID);

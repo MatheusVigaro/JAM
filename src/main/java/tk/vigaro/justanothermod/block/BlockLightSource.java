@@ -15,7 +15,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockLightSource extends Block{
 	public BlockLightSource(float lightLevel){
 		super(JAMMaterials.lightSourceMaterial);
-		this.setBlockName(BlockInformation.LIGHT_SOURCE_UNLOCALIZED_NAME);
+		this.setBlockName(BlockInfo.LIGHT_SOURCE_UNLOCALIZED_NAME);
 		this.setLightLevel(lightLevel);
 		this.setBlockBounds(0F, 0F, 0F, 0F, 0F, 0F);
 		this.setBlockTextureName(References.ID + ":noTexture");

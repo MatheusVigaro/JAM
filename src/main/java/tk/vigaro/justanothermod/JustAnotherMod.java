@@ -7,10 +7,11 @@ import org.apache.logging.log4j.LogManager;
 
 import tk.vigaro.justanothermod.block.JAMBlocks;
 import tk.vigaro.justanothermod.command.PreGenCommand;
+import tk.vigaro.justanothermod.config.ConfigChunkPreGen;
 import tk.vigaro.justanothermod.handler.ConfigHandler;
 import tk.vigaro.justanothermod.handler.TickHandler;
 import tk.vigaro.justanothermod.item.JAMItems;
-import tk.vigaro.justanothermod.util.Utilities;
+import tk.vigaro.justanothermod.util.ChunkGenUtils;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -23,7 +24,7 @@ import cpw.mods.fml.common.network.NetworkCheckHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid = References.ID, version = References.VERSION)
+@Mod(modid = References.ID, version = References.VERSION, dependencies = "required-after:CoFHCore")
 public class JustAnotherMod{
 	@Instance(value = References.ID)
 	public static JustAnotherMod instance;
@@ -52,21 +53,21 @@ public class JustAnotherMod{
     public void init(FMLInitializationEvent event){
 		JAMBlocks.registerRecipes();
 		JAMBlocks.registerOreDict();
+		JAMBlocks.registerTileEntities();
 		JAMItems.registerRecipes();
 		JAMItems.registerOreDict();
 		GameRegistry.registerFuelHandler(new FuelHandler());
 	}
 	
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event){
-		CompressBlocks.init();
+	public void postInit(FMLPostInitializationEvent event){	
 	}
 	
 	@EventHandler
 	public void serverInit(FMLServerStartingEvent event){
 		event.registerServerCommand(new PreGenCommand());
-		if(ConfigInfo.x != null && ConfigInfo.z != null && ConfigInfo.height != null && ConfigInfo.width != null && ConfigInfo.height > 0 && ConfigInfo.width > 0) {
-			Utilities.generateChunks(ConfigInfo.x, ConfigInfo.z, ConfigInfo.width, ConfigInfo.height, 0);
+		if(ConfigChunkPreGen.x != null && ConfigChunkPreGen.z != null && ConfigChunkPreGen.height != null && ConfigChunkPreGen.width != null && ConfigChunkPreGen.height > 0 && ConfigChunkPreGen.width > 0) {
+			ChunkGenUtils.generateChunks(ConfigChunkPreGen.x, ConfigChunkPreGen.z, ConfigChunkPreGen.width, ConfigChunkPreGen.height, 0);
 		}
 	}
 }

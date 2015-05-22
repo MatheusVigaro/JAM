@@ -4,10 +4,12 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.oredict.OreDictionary;
 import tk.vigaro.justanothermod.JAMMaterials;
 import tk.vigaro.justanothermod.References;
 import tk.vigaro.justanothermod.block.JAMBlocks;
+import tk.vigaro.justanothermod.handler.CompressedRenderHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class JAMItems {
@@ -18,6 +20,7 @@ public class JAMItems {
 	public static Item enderArmorLeggings;
 	public static Item enderArmorBoots;
 	public static Item wandLight;
+	public static Item compressedBlock;
 	
 	public static void init(){
 		References.logger.info("Registering items");
@@ -28,6 +31,7 @@ public class JAMItems {
 		enderArmorLeggings = new ItemEnderArmor(ItemInfo.ENDER_ARMOR_UNLOCALIZED_NAME + "Leggings", JAMMaterials.enderArmorMaterial, 2);
 		enderArmorBoots = new ItemEnderArmor(ItemInfo.ENDER_ARMOR_UNLOCALIZED_NAME + "Boots", JAMMaterials.enderArmorMaterial, 3);
 		wandLight = new ItemWandLight();
+		compressedBlock = new ItemCompressedBlock();
 		
 	}
 	
@@ -39,8 +43,8 @@ public class JAMItems {
 		GameRegistry.registerItem(enderArmorLeggings, ItemInfo.ENDER_ARMOR_UNLOCALIZED_NAME + "Leggings");
 		GameRegistry.registerItem(enderArmorBoots, ItemInfo.ENDER_ARMOR_UNLOCALIZED_NAME + "Boots");
 		GameRegistry.registerItem(wandLight, ItemInfo.WAND_LIGHT_UNLOCALIZED_NAME);
-
-		
+		GameRegistry.registerItem(compressedBlock, ItemInfo.ITEM_COMPRESSED_UNLOCALIZED_NAME);
+		MinecraftForgeClient.registerItemRenderer(compressedBlock, new CompressedRenderHandler());
 	}
 	
 	public static void registerRecipes(){
@@ -109,7 +113,7 @@ public class JAMItems {
                                                 "b  ", 'o', obsidianStack, 'g', glowstoneStack, 'w', wandLight3Stack, 'b', blockGoldStack);
 		GameRegistry.addRecipe(wandLight5Stack, " gc",
                                                 " wg",
-                                                "d  ", 'g', blockGoldStack, 'n', condensedLightStack, 'w', wandLight4Stack, 'd', blockDiamondStack);
+                                                "d  ", 'g', blockGoldStack, 'c', condensedLightStack, 'w', wandLight4Stack, 'd', blockDiamondStack);
 
 	}
 

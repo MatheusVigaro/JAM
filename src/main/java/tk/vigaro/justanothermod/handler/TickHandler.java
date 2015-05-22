@@ -3,10 +3,10 @@ package tk.vigaro.justanothermod.handler;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatComponentTranslation;
-import tk.vigaro.justanothermod.ConfigInfo;
 import tk.vigaro.justanothermod.References;
+import tk.vigaro.justanothermod.config.ConfigChunkPreGen;
 import tk.vigaro.justanothermod.util.ChunkPosition;
-import tk.vigaro.justanothermod.util.Utilities;
+import tk.vigaro.justanothermod.util.ChunkGenUtils;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 
@@ -18,12 +18,12 @@ public class TickHandler {
 	public void onServerTick(TickEvent.ServerTickEvent event) {
 		if(References.toGenerate != null && !References.toGenerate.isEmpty()) {
 			tickCounter++;
-			for(int i = 0; i < ConfigInfo.chunksPerTick; i++) {
+			for(int i = 0; i < ConfigChunkPreGen.chunksPerTick; i++) {
 				ChunkPosition cp = References.toGenerate.poll();
 				if(cp != null) {
-					Utilities.generateChunk(null, cp.getX(), cp.getZ(), cp.getDimensionID());
+					ChunkGenUtils.generateChunk(null, cp.getX(), cp.getZ(), cp.getDimensionID());
 					float completedPercentage = 1 - (float)References.toGenerate.size()/(float)References.startingSize;
-					if(tickCounter == ConfigInfo.tickDelay) {
+					if(tickCounter == ConfigChunkPreGen.tickDelay) {
 						References.logger.info("percentage: " + completedPercentage);
 						tickCounter = 0;
 						ChatComponentTranslation chatTranslation = new ChatComponentTranslation("");
